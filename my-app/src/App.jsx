@@ -62,6 +62,10 @@ function App() {
             Join the Waitlist
           </button>
         </form>
+        <div className="footer">
+          © 2025 POSKO
+          <a href="#privacy">Privacy Policy</a>
+        </div>
       </div>
     </div>
   )
