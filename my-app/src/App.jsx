@@ -5,15 +5,10 @@ function App() {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!validateEmail(email)) {
+    if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address')
       return
     }
@@ -43,9 +38,9 @@ function App() {
   return (
     <div className="container">
       <div className="content">
-        <h1>Something great is coming</h1>
+        <h1>EVE is coming</h1>
         <p>Be the first to know when we launch.</p>
-        <form onSubmit={handleSubmit} className="signup-form">
+        <form onSubmit={handleSubmit} className="signup-form" noValidate>
           <input
             type="email"
             placeholder="Enter your email"
