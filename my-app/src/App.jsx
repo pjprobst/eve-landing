@@ -41,11 +41,8 @@ function App() {
     <div className="container">
       <img src={logo} alt="EVE Logo" className="logo" />
       <div className="content">
-        <h1>EVE is Coming</h1>
+        <h1>POSKO is Coming</h1>
         <p>Get in on something big.</p>
-        <video className="demo-video" autoPlay loop muted playsInline>
-          <source src={demoVideo} type="video/mp4" />
-        </video>
         <form onSubmit={handleSubmit} className="signup-form" noValidate>
           <input
             type="email"
@@ -62,6 +59,9 @@ function App() {
             Join the Waitlist
           </button>
         </form>
+        <video className="demo-video" autoPlay loop muted playsInline>
+          <source src={demoVideo} type="video/mp4" />
+        </video>
       </div>
     </div>
   )
