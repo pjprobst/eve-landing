@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import demoVideo from './DEMO VIDEO (EVE) .mp4'
+import logo from './logo.png'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -37,9 +39,13 @@ function App() {
 
   return (
     <div className="container">
+      <img src={logo} alt="EVE Logo" className="logo" />
       <div className="content">
-        <h1>EVE is coming</h1>
-        <p>Be the first to know when we launch.</p>
+        <h1>EVE is Coming</h1>
+        <p>Get in on something big.</p>
+        <video className="demo-video" autoPlay loop muted playsInline>
+          <source src={demoVideo} type="video/mp4" />
+        </video>
         <form onSubmit={handleSubmit} className="signup-form" noValidate>
           <input
             type="email"
@@ -53,7 +59,7 @@ function App() {
           />
           {error && <span className="error-message">{error}</span>}
           <button type="submit" className="submit-btn">
-            Notify Me
+            Join the Waitlist
           </button>
         </form>
       </div>
