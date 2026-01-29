@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import demoVideo from './DEMO VIDEO (EVE) .mp4'
+import demoVideo from './MEET POSKO.mp4'
 import logo from './logo.png'
 
 function App() {
