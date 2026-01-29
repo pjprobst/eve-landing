@@ -1,0 +1,90 @@
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  background: #F8F7FF;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: #1F1F1F;
+}
+
+p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  color: #6B6B6B;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.error-message {
+  color: #E53E3E;
+  font-size: 0.875rem;
+  text-align: left;
+  margin-top: -0.5rem;
+}
+
+.email-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  transition: all 0.2s;
+  font-family: inherit;
+  background: #FFFFFF;
+  color: #1F1F1F;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #7C5CFF;
+}
+
+.email-input::placeholder {
+  color: #9B9B9B;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  background: #7C5CFF;
+  color: #FFFFFF;
+}
+
+.submit-btn:hover {
+  background: #6847E6;
+}
+
+.submit-btn:active {
+  transform: scale(0.99);
+}
