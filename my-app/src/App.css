@@ -116,16 +116,17 @@ p {
 }
 
 .success-message {
-  color: #2D7A4F;
+  color: #5B4A8F;
   font-size: 0.9375rem;
   text-align: center;
   margin-top: -0.625rem;
   font-family: system-ui, sans-serif;
   padding: 0.75rem;
-  background: #E8F5EC;
+  background: #F5F3F8;
   border-radius: 4px;
-  border: 1px solid #2D7A4F;
+  border: 1px solid #5B4A8F;
   animation: fadeInUp 0.3s ease-out forwards;
+  box-shadow: 0 2px 8px rgba(91, 74, 143, 0.15);
 }
 
 .email-input {

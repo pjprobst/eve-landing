@@ -27,18 +27,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Check for duplicates by getting all existing emails
-    const existingEmails = await kv.lrange('emails', 0, -1)
+    const emailLower = email.toLowerCase()
 
-    // Parse and check if email already exists
-    const emailExists = existingEmails.some(entry => {
-      try {
-        const parsed = JSON.parse(entry)
-        return parsed.email.toLowerCase() === email.toLowerCase()
-      } catch {
-        return false
-      }
-    })
+    // Check if email exists using a Redis Set (O(1) lookup)
+    const emailExists = await kv.sismember('email_set', emailLower)
 
     if (emailExists) {
       return res.json({
@@ -54,8 +46,11 @@ export default async function handler(req, res) {
       date: new Date().toISOString()
     }
 
-    // Store in Vercel KV using a list
-    await kv.lpush('emails', JSON.stringify(emailEntry))
+    // Store email in both set (for fast duplicate checking) and list (for full data)
+    await Promise.all([
+      kv.sadd('email_set', emailLower),
+      kv.lpush('emails', JSON.stringify(emailEntry))
+    ])
 
     res.json({
       success: true,

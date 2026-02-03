@@ -34,8 +34,8 @@ function App() {
         if (!data.duplicate) {
           setEmail('')
         }
-        // Clear success message after 5 seconds
-        setTimeout(() => setSuccessMessage(''), 5000)
+        // Clear success message after 3 seconds
+        setTimeout(() => setSuccessMessage(''), 3000)
       } else {
         const data = await response.json()
         setError(data.error || 'Something went wrong. Please try again.')
