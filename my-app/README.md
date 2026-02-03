@@ -9,29 +9,44 @@ Currently, two official plugins are available:
 
 ## Deploying to Vercel
 
-This app is configured for easy deployment to Vercel with serverless API functions.
+This app is configured for easy deployment to Vercel with serverless API functions and Vercel KV (Redis) for email storage.
 
 ### Quick Deploy
 
 1. Push your code to GitHub
 2. Go to [Vercel](https://vercel.com) and sign in
 3. Click "New Project" and import your GitHub repository
-4. Vercel will automatically detect the Vite configuration
-5. Click "Deploy"
+4. **IMPORTANT**: Set the Root Directory to `my-app` (click Edit button)
+5. Vercel will automatically detect the Vite configuration
+6. Click "Deploy"
+
+### Setting Up Vercel KV (Required for Email Storage)
+
+After your first deployment:
+
+1. Go to your project dashboard on Vercel
+2. Click on the "Storage" tab
+3. Click "Create Database" and select "KV Database" (powered by Upstash Redis)
+4. Give it a name (e.g., "eve-landing-kv")
+5. Click "Create"
+6. The KV database will automatically connect to your project
+7. Redeploy your project for the environment variables to take effect
+
+That's it! Your `/api/subscribe` endpoint will now store emails in Redis.
 
 ### Deployment Details
 
-- Frontend: Built with Vite and output to `dist` directory
-- API: Serverless function at `/api/subscribe` for email subscriptions
-- The `vercel.json` configuration ensures proper routing
+- **Frontend**: Built with Vite and output to `dist` directory
+- **API**: Serverless function at `/api/subscribe` for email subscriptions
+- **Database**: Vercel KV (Redis) for persistent email storage
+- **Config**: The `vercel.json` configuration ensures proper routing
 
-### Important Note on Data Persistence
+### Viewing Your Stored Emails
 
-The current email subscription API uses file-based storage (`emails.json`), which doesn't persist well with serverless functions. For production, consider using:
-- Vercel KV (Redis)
-- Vercel Postgres
-- MongoDB Atlas
-- Any other database service
+You can view stored emails in two ways:
+
+1. **Vercel Dashboard**: Go to Storage → Your KV Database → Browse Data → Look for the `emails` key
+2. **CLI**: Install Vercel CLI and use `vercel kv` commands
 
 ## React Compiler
 
