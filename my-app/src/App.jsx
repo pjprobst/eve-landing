@@ -6,6 +6,7 @@ import logo from './logo.png'
 function App() {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -16,6 +17,7 @@ function App() {
     }
 
     setError('')
+    setSuccessMessage('')
 
     try {
       const response = await fetch('/api/subscribe', {
@@ -27,13 +29,19 @@ function App() {
       })
 
       if (response.ok) {
-        alert('Thanks for signing up!')
-        setEmail('')
+        const data = await response.json()
+        setSuccessMessage(data.message)
+        if (!data.duplicate) {
+          setEmail('')
+        }
+        // Clear success message after 5 seconds
+        setTimeout(() => setSuccessMessage(''), 5000)
       } else {
-        alert('Something went wrong. Please try again.')
+        const data = await response.json()
+        setError(data.error || 'Something went wrong. Please try again.')
       }
     } catch (error) {
-      alert('Could not connect to server. Please make sure the server is running.')
+      setError('Could not connect to server. Please try again later.')
     }
   }
 
@@ -54,10 +62,12 @@ function App() {
             onChange={(e) => {
               setEmail(e.target.value)
               setError('')
+              setSuccessMessage('')
             }}
             className="email-input"
           />
           {error && <span className="error-message">{error}</span>}
+          {successMessage && <span className="success-message">{successMessage}</span>}
           <button type="submit" className="submit-btn">
             Join the Waitlist
           </button>

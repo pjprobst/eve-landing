@@ -115,6 +115,19 @@ p {
   font-family: system-ui, sans-serif;
 }
 
+.success-message {
+  color: #2D7A4F;
+  font-size: 0.9375rem;
+  text-align: center;
+  margin-top: -0.625rem;
+  font-family: system-ui, sans-serif;
+  padding: 0.75rem;
+  background: #E8F5EC;
+  border-radius: 4px;
+  border: 1px solid #2D7A4F;
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
 .email-input {
   width: 100%;
   padding: 0.9375rem 1.125rem;
